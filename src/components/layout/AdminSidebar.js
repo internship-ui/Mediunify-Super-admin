@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Image from 'next/image';
+import { Logo } from '@/components/ui/Logo';
 import { cn } from '@/lib/utils';
 import { NAVIGATION_CATEGORIES } from '@/data/navigation';
 import {
@@ -37,6 +37,7 @@ import {
   Truck,
   Bike,
   TestTube2,
+  X,
 } from 'lucide-react';
 
 const ICON_MAP = {
@@ -91,40 +92,36 @@ export function AdminSidebar({ isMobileOpen, onCloseMobile }) {
       >
         {/* Logo & Header */}
         <div className="flex items-center justify-between px-5 h-20 border-b border-slate-100 dark:border-slate-800">
-          <Link href="/dashboard" className="flex items-center gap-3 overflow-hidden">
-            <div className="relative w-10 h-10 shrink-0 rounded-xl overflow-hidden bg-white p-1 border border-slate-100 dark:border-slate-800 shadow-sm">
-              <Image
-                src="/images/mediunify-logo.png"
-                alt="MediUnify"
-                width={40}
-                height={40}
-                className="object-contain w-full h-full"
-                priority
-              />
-            </div>
-            {!collapsed && (
-              <div className="flex flex-col">
-                <span className="font-extrabold text-base tracking-tight text-[#1E3A8A] dark:text-blue-400">
-                  Medi<span className="text-[#00B894]">Unify</span>
-                </span>
-                <span className="text-[10px] font-semibold tracking-wider uppercase text-slate-400">
-                  Super Admin Hub
-                </span>
-              </div>
-            )}
+          <Link
+            href="/dashboard"
+            onClick={onCloseMobile}
+            className="flex items-center gap-3 overflow-hidden"
+          >
+            <Logo showText={!collapsed} size="md" />
           </Link>
 
-          {/* Desktop collapse button */}
-          <button
-            onClick={() => setCollapsed(!collapsed)}
-            className="hidden lg:flex items-center justify-center w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-          >
-            {collapsed ? (
-              <ChevronRight className="w-4 h-4" />
-            ) : (
-              <ChevronLeft className="w-4 h-4" />
-            )}
-          </button>
+          <div className="flex items-center gap-1">
+            {/* Mobile close button */}
+            <button
+              onClick={onCloseMobile}
+              className="flex lg:hidden items-center justify-center w-8 h-8 rounded-lg text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              aria-label="Close navigation drawer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Desktop collapse button */}
+            <button
+              onClick={() => setCollapsed(!collapsed)}
+              className="hidden lg:flex items-center justify-center w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            >
+              {collapsed ? (
+                <ChevronRight className="w-4 h-4" />
+              ) : (
+                <ChevronLeft className="w-4 h-4" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Navigation Categories */}

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
+import { Logo } from '@/components/ui/Logo';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -39,23 +39,8 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-teal-50/20 to-blue-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4">
       <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl mb-4 p-2">
-            <Image
-              src="/images/mediunify-logo.png"
-              alt="MediUnify"
-              width={64}
-              height={64}
-              className="object-contain w-full h-full"
-              priority
-            />
-          </div>
-          <h1 className="text-2xl font-extrabold text-[#1E3A8A] dark:text-blue-400">
-            Medi<span className="text-[#00B894]">Unify</span>
-          </h1>
-          <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mt-1">
-            Super Admin Control Center
-          </p>
+        <div className="flex flex-col items-center justify-center text-center mb-8">
+          <Logo size="lg" subtitle="Super Admin Control Center" className="flex-col gap-2" />
         </div>
 
         <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-2xl p-8">

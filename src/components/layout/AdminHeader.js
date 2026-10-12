@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useTheme } from '@/providers/ThemeProvider';
+import { Logo } from '@/components/ui/Logo';
 import {
   Menu,
   Sun,
@@ -35,34 +37,39 @@ export function AdminHeader({ onOpenMobile }) {
   return (
     <header className="sticky top-0 z-30 flex flex-col bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800">
       {/* Top Notice: Mock Demonstration Mode */}
-      <div className="bg-gradient-to-r from-teal-500/10 via-emerald-500/10 to-blue-500/10 border-b border-teal-500/20 px-4 py-1 text-center text-[11px] font-medium text-teal-800 dark:text-teal-300 flex items-center justify-center gap-2">
-        <Sparkles className="w-3.5 h-3.5 text-teal-600 animate-pulse" />
-        <span>
-          <strong>Current Phase: Frontend-Only Architecture</strong> — Local Mock Data active with repository abstraction ready for future Node.js REST API.
+      <div className="bg-gradient-to-r from-teal-500/10 via-emerald-500/10 to-blue-500/10 border-b border-teal-500/20 px-3 py-1 text-center text-[10px] sm:text-[11px] font-medium text-teal-800 dark:text-teal-300 flex items-center justify-center gap-1.5 overflow-hidden">
+        <Sparkles className="w-3 h-3 text-teal-600 animate-pulse shrink-0" />
+        <span className="truncate">
+          <strong>Frontend Only Architecture</strong> — Mock Data active with repository abstraction.
         </span>
         <button
           onClick={handleResetData}
-          className="ml-2 underline text-teal-700 dark:text-teal-400 hover:text-teal-900 flex items-center gap-1 font-semibold"
+          className="ml-1 underline text-teal-700 dark:text-teal-400 hover:text-teal-900 flex items-center gap-1 font-semibold shrink-0"
           title="Reset local storage changes"
         >
-          <RotateCcw className="w-3 h-3" /> Reset Mock Data
+          <RotateCcw className="w-2.5 h-2.5" /> Reset
         </button>
       </div>
 
-      <div className="flex items-center justify-between h-16 px-4 sm:px-6">
-        {/* Left: Hamburger & City Switcher */}
-        <div className="flex items-center gap-4">
+      <div className="flex items-center justify-between h-14 sm:h-16 px-3 sm:px-6">
+        {/* Left: Hamburger & Mobile Logo / Desktop City Switcher */}
+        <div className="flex items-center gap-2 sm:gap-4 min-w-0">
           <button
             onClick={onOpenMobile}
-            className="p-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 lg:hidden"
+            className="p-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 lg:hidden shrink-0"
             aria-label="Toggle navigation"
           >
             <Menu className="w-5 h-5" />
           </button>
 
+          {/* Mobile Brand Logo */}
+          <Link href="/dashboard" className="flex lg:hidden items-center min-w-0">
+            <Logo showText={true} size="sm" subtitle={null} />
+          </Link>
+
           {/* Regional City Hub Filter */}
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 text-xs">
-            <MapPin className="w-3.5 h-3.5 text-teal-600" />
+          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 text-xs">
+            <MapPin className="w-3.5 h-3.5 text-teal-600 shrink-0" />
             <span className="font-semibold text-slate-700 dark:text-slate-300">
               Operations Hub:
             </span>

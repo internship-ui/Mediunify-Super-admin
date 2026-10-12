@@ -26,7 +26,7 @@ export function TableToolbar({
   onReset,
 }) {
   return (
-    <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 p-5 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 rounded-t-2xl">
+    <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 p-3.5 sm:p-5 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 rounded-t-2xl">
       {/* Left Filters */}
       <div className="flex flex-1 flex-wrap items-center gap-2.5">
         <div className="w-full sm:w-72">
@@ -40,7 +40,7 @@ export function TableToolbar({
         </div>
 
         {statusOptions.length > 0 && onStatusChange && (
-          <div className="w-36">
+          <div className="w-full sm:w-36">
             <Select
               value={statusFilter}
               onChange={(e) => onStatusChange(e.target.value)}
@@ -51,7 +51,7 @@ export function TableToolbar({
         )}
 
         {onCityChange && (
-          <div className="w-36">
+          <div className="w-full sm:w-36">
             <Select
               value={cityFilter}
               onChange={(e) => onCityChange(e.target.value)}
@@ -62,7 +62,7 @@ export function TableToolbar({
         )}
 
         {categoryOptions.length > 0 && onCategoryChange && (
-          <div className="w-40">
+          <div className="w-full sm:w-40">
             <Select
               value={categoryFilter}
               onChange={(e) => onCategoryChange(e.target.value)}
